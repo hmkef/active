@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+    <!--网站编码格式，UTF-8 国际编码，GBK或 gb2312 中文编码-->
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <meta name="Keywords" content="关键词一，关键词二">
+        <meta name="Description" content="网站描述内容">
+        <meta name="Author" content="Yvette Lau">
+        <title>Document</title>
+        <!--css js 文件的引入-->
+        <style>
+            #leftFrame{display:block;}
+        </style>
+    </head>
+    <body>          
+       
+        <iframe src="http://ys.cdk8.cn" frameborder="0" width="100%" height="910px" scrolling='auto' name="leftFrame" noresize="noresize"  id="leftFrame"></iframe>
+       
+    </body>
+</html>
+<script>
+    window.onload = function(){
+        var iframe = document.querySelector("#leftFrame");
+        var bot = iframe.contentWindow.document.querySelector("#bot");
+        var top = iframe.contentWindow.document.querySelector("#top");
+        bot.onclick = function(){
+            document.body.scrollTop = document.body.offsetHeight;
+        };
+        top.onclick = function(){
+            document.body.scrollTop = 0;
+        };
+    };
+</script>
