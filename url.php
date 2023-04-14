@@ -1,5 +1,5 @@
 ﻿<?php 
-$url=isset($_GET['url'])?$_GET['url']:'http://laxlerbo.github.io/active/Safeurl.php'; //   此处写没有被拦截的域名
+$url=isset($_GET['url'])?$_GET['url']:'https://laxlerbo.github.io/active/Safeurl.php'; //   此处写没有被拦截的域名
 
 // 更多源码请访问 https://www.vfaner.com
 
