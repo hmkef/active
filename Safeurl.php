@@ -1,5 +1,5 @@
 ﻿<?php 
-$url=isset($_GET['url'])?$_GET['url']:'http://188tv.vip';//改成你已经被拦截的域名网址
+$url=isset($_GET['url'])?$_GET['url']:'https://www.188tv.vip';//改成你已经被拦截的域名网址
 
 
  ?>
