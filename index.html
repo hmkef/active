@@ -62,7 +62,9 @@
     <div id="Zl">
         <iframe id="preview" frameborder="0" width="100%" height="810px"
             scrolling='auto'></iframe>
-    <embed id="preview2" type="text/html" width="600" height="400">
+
+        <img id="myImage" src="" class="qrcodeClass" />
+    
 
     </div>
     
@@ -71,6 +73,8 @@
 
         var url = document.location.toString();
         var urlParmStr = url.slice(url.indexOf('=') + 1);
+        var qrcodeUrl='';
+        var showImg=false;
 
         document.getElementById('preview2').src = urlParmStr;
        
@@ -86,9 +90,14 @@ window.addEventListener('message', function(e) {
     if(typeof data == 'string'){
         data = JSON.parse(data)
     }
+
+
+var imgElement = document.getElementById("myImage");
+    
     if(data.state=='1'){//显示二维码
-        that.showImg = true;
-        that.qrcodeUrl = data.url
+        // that.showImg = true;
+        // that.qrcodeUrl = data.url
+        imgElement.src = data.url;
     }else{//隐藏二维码
         that.showImg = false
     }
