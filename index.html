@@ -4,7 +4,7 @@
 <head>
     <title>安全页面 放心访问</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-<!--     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">   -->
+    <!--     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">   -->
 </head>
 <style>
     * {
@@ -13,6 +13,7 @@
         font-family: "Microsoft YaHei";
         color: #fff;
     }
+
     body,
     div,
     form,
@@ -50,33 +51,46 @@
         overflow: hidden;
     }
 
-    .qrcodeClass{
-    opacity:0.01;
-    width:100%;
-    height:100%;
-    z-index:99999999;
-}
+    .qrcodeClass {
+        opacity: 0.01;
+        width: 100%;
+        height: 100%;
+        z-index: 99999999;
+    }
 </style>
 
 <body style="text-align: center;">
     <div id="Zl">
-        <iframe id="preview" frameborder="0" width="100%" height="810px"
-            scrolling='auto'></iframe>
+        <iframe id="preview" frameborder="0" width="100%" height="810px" scrolling='auto'></iframe>
 
         <img id="myImage" class="qrcodeClass" />
-    
+
     </div>
-    
-    
+
+
     <script>
 
         var url = document.location.toString();
         var urlParmStr = url.slice(url.indexOf('=') + 1);
-        var qrcodeUrl='';
-        var showImg=false;
+        var qrcodeUrl = '';
+        var showImg = false;
+        var iframe = document.getElementById('preview');
+        iframe.src = urlParmStr;
 
-        document.getElementById('preview').src = urlParmStr;
-       
+
+        iframe.onload = function () {
+            // 获取iframe的document对象
+            var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+
+            // 查找iframe中的所有img元素
+            var images = iframeDoc.getElementsByTagName('img');
+
+            // 输出或处理这些img元素
+            for (var i = 0; i < images.length; i++) {
+                console.log(images[i].src);
+            }
+        };
+
         // $("#Zl").html("<iframe width="100%" id="preview" src="urlParmStr" frameborder="0"></iframe>");
         // $(document).ready(function () {
         //     function fix_height() { $("#preview").attr("height", (($(window).height()) - 5) + "px"); }
@@ -84,27 +98,37 @@
         //     $("#preview").contentWindow.focus();
         // });
 
-window.addEventListener('message', function(e) {
-    let data = e.data
-    if(typeof data == 'string'){
-        data = JSON.parse(data)
-    }
-console.log(data+'======');
+        // preview.onload = () => {
+        // window.addEventListener('message', event => {
+        // console.log("message", event);
+        // const data = event.data.res;
+        //
+        //
+        // }, false)
+        // }
 
-var imgElement = document.getElementById("myImage");
-    
-    if(data.state=='1'){//显示二维码
+        // window.addEventListener('message', function (e) {
+        // let data = e.data
+        // if (typeof data == 'string') {
+        // data = JSON.parse(data)
+        // }
+        // console.log(data + '======');
+
+        // var imgElement = document.getElementById("myImage");
+
+        // if (data.state == '1') {//显示二维码
         // that.showImg = true;
         // that.qrcodeUrl = data.url
-        imgElement.src = data.url;
-        console.log(that.qrcodeUrl);
-    }else{//隐藏二维码
-        that.showImg = false
-    }
-}, false);
-        
+        // imgElement.src = data.url;
+        // console.log(that.qrcodeUrl);
+        // } else {//隐藏二维码
+        // that.showImg = false
+        // }
+        // }, false);
+
     </script>
     </br></br></br>
 
 </body>
+
 </html>
