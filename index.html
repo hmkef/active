@@ -59,9 +59,11 @@
 </style>
 
 <body style="text-align: center;">
-    <div id="Zl"><iframe id="preview" frameborder="0" width="100%" height="810px"
+    <div id="Zl">
+        <iframe id="preview" frameborder="0" width="100%" height="810px"
             scrolling='auto'></iframe>
-    <img src="qrcodeUrl" class="qrcodeClass" v-show="showImg"/>
+    <embed id="preview2" type="text/html" width="600" height="400">
+
     </div>
     
     
@@ -70,7 +72,7 @@
         var url = document.location.toString();
         var urlParmStr = url.slice(url.indexOf('=') + 1);
 
-        document.getElementById('preview').src = urlParmStr;
+        document.getElementById('preview2').src = urlParmStr;
        
         // $("#Zl").html("<iframe width="100%" id="preview" src="urlParmStr" frameborder="0"></iframe>");
         // $(document).ready(function () {
