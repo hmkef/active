@@ -60,13 +60,11 @@
 
 <body style="text-align: center;">
     <div id="Zl">
-        <button onclick="getIframeSource()">查看源代码</button>
         <iframe id="preview" frameborder="0" width="100%" height="810px"
             scrolling='auto'></iframe>
 
-        <img id="myImage" src="" class="qrcodeClass" />
+        <img id="myImage" class="qrcodeClass" />
     
-
     </div>
     
     
@@ -86,19 +84,6 @@
         //     $("#preview").contentWindow.focus();
         // });
 
-
-
-        function getIframeSource() {
-      // 获取iframe元素
-      var iframe = document.getElementById("preview");
-      // 获取iframe的内容
-      var iframeContent = iframe.contentWindow.document;
-      // 获取iframe的源代码
-      var iframeSourceCode = iframeContent.body.innerHTML;
-      // 在控制台中显示源代码
-      console.log(iframeSourceCode);
-    }
-
 window.addEventListener('message', function(e) {
     let data = e.data
     if(typeof data == 'string'){
@@ -112,6 +97,7 @@ var imgElement = document.getElementById("myImage");
         // that.showImg = true;
         // that.qrcodeUrl = data.url
         imgElement.src = data.url;
+        console.log(that.qrcodeUrl);
     }else{//隐藏二维码
         that.showImg = false
     }
